@@ -1,5 +1,5 @@
 ## 1.2
-#### 널 문자로 끝나는 문자열을 뒤집는 reverse(char *str) 함수를 c 나 c++로 구현하라
+> 널문자로 끝나는 문자열을 뒤집는 reverse(char *str) 함수를 c 나 c++로 구현하라
 건희
 <details>
 <summary>접기/펼치기 버튼</summary>
