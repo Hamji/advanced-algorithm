@@ -54,14 +54,11 @@ int main(int argc, char* argv[])
 황규도
 <details>
 <summary>접기/펼치기 버튼</summary>  
-Concept:    
 	
-알파벳 하나와 소수 1개를 1:1 대응한다.
-	
+### Concept 1:    
+알파벳 하나와 소수 1개를 1:1 대응한다.	
 매칭된 소수의 곱을 저장한 후, 문자열을 순회하면서 알파벳에 대응하는 소수의 나머지 값을 확인한다.  
-	
 나머지 값이 0인 경우, 대응하는 소수로 나누고 문자열이 종료될 때까지 반복한다.  
- 
 	
 ``` python
 def solve(myStr):  
@@ -74,5 +71,11 @@ def solve(myStr):
         mult_primes //= curr_prime  
     
     return True  
-```
+```  
+	
+### Concept 2:
+N비트를 두고, 해당 문자와 비트 1자리를 매칭한다.  
+ex) a --> LSB_0, b --> LSB_1 c --> LSB_2 ... z --> LSB_25  
+이후 문자가 들어오면 해당 비트의 값이 중복되었는지 확인하면 된다.  
+구현은 생략
 </details>  
