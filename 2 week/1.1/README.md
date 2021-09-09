@@ -79,3 +79,39 @@ ex) a --> LSB_0, b --> LSB_1 c --> LSB_2 ... z --> LSB_25
 이후 문자가 들어오면 해당 비트의 값이 중복되었는지 확인하면 된다.  
 구현은 생략
 </details>  
+	
+김경찬
+<details>
+<summary>접기/펼치기 버튼</summary>  
+
+### 개념:
+원하는 문자의 범위에서 모든 문자의 숫자만큼 배열을 생성하고
+문자열의 한 글자마다 그 글자에 해당하는 정수값을 구한뒤
+배열에서 이 정수값의 인덱스에 접근해서 문자열의 존재여부를 저장한다.
+Loop를 돌면서 그 인덱스에 값에 이미 존재한다면 바로 return을 한다.
+
+해답은 자바스크립트의 배열의 크기가 유동적이고, 크기를 지정할 필요가 없다는 특성을 이용
+만약 타 언어로 작성시 아래의 기준에따라 배열을 지정해준다.
+	
+1. 알파벳: 26
+2. ASCII: 256
+3. UNICODE: 65536
+``` javascript
+const isSole = (input) => {
+    let tempArr = [];
+    for(const letter of input){
+        if (tempArr[letter.charCodeAt()])
+            return false;
+        else
+            tempArr[letter.charCodeAt()] = true;
+    }
+    return true;
+}
+console.log(isSole("abcdefgg")); // false
+console.log(isSole("가나다라마바가사아")); // false
+console.log(isSole("abcdefghijk")); // true
+console.log(isSole("명지대학교")); // true
+```
+
+</details>  
+
