@@ -47,15 +47,17 @@ int main(int argc, char* argv[])
   
 </details>
 
-	황규도
-	<details>
-		<summary>접기/펼치기 버튼</sumarry>
-		
-		'''python
-		def solve(a, b):
-	    	    a = sorted(a)
-    		    b = sorted(b)
-    		    return a == b
-	    	'''
+황규도
+<details>
+<summary>접기/펼치기 버튼</summary>
+	
+``` python
+
+def solve(a, b):
+    a = sorted(a)
+    b = sorted(b)
+    return a == b
+	
+```
 		    
-	</details>
+</details>
