@@ -37,7 +37,15 @@ if __name__ == '__main__':
 <summary>접기/펼치기 버튼</summary>  
 
 ### 개념:
-특정 문자를 아무리 회전시켜도 그 문자를 2개 더한것에 포함이 된다.
+특정 문자를 아무리 회전시켜도 그 문자를 2개 더한것에 포함이 된다.  
+예) abc를 회전시킨다면?  
+<pre>
+abcabc  
+abc
+ bca  
+  cab  
+   abc  
+</pre>
 
 ``` javascript
 const isRotated = (input1, input2) => (input1 + input1).includes(input2);
