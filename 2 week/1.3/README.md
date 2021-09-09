@@ -61,3 +61,34 @@ def solve(a, b):
 ```
 		    
 </details>
+	
+김경찬
+<details>
+<summary>접기/펼치기 버튼</summary>  
+
+### 개념:
+배열을 유니코드의 갯수만큼 0으로 채우고  
+주어진 문자열을 한 글자씩 순회하면서 그 글자의 유니코드로 배열 Idx에 접근한다.  
+그리고 그 값을 1 증가 시킨다.  
+두 배열이 같은지 확인한다  
+ 
+
+``` javascript
+const isSame = (input1, input2) => {
+  const array1 = new Array(65536).fill(0),
+    array2 = new Array(65536).fill(0);
+  if (input1.length != input2.length) return false;
+  [...input1].forEach((e, i) => {
+    array1[input1[i].charCodeAt()]++;
+    array2[input2[i].charCodeAt()]++;
+  });
+  return !array1.some((e, i) => {
+    return array1[i] != array2[i];
+  });
+};
+
+console.log(isSame("명지대학교", "대지명")); // 글자수다름
+console.log(isSame("명지대학교", "학대지명교")); // 같은순열
+console.log(isSame("Coffee", "efefCo")); // 같은순열
+console.log(isSame("띵지대학교", "학대지명교")); // 다른순열
+```
