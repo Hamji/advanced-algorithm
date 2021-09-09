@@ -167,7 +167,6 @@ const getRand = () =>
 let random;
 while (1) {
   random = getRand();
-  console.log(random);
   count++;
   if (problem[Math.ceil(random / numRow) - 1][random % numCol] == 0) {
     setRowZero(problem, Math.ceil(random / numRow) - 1);
