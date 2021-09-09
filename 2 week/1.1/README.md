@@ -54,21 +54,21 @@ int main(int argc, char* argv[])
 황규도
 <details>
 <summary>접기/펼치기 버튼</summary>
-Concept:
-"""
+Concept:  
+```
 알파벳 하나와 소수 1개를 1:1 대응한다. 
 매칭된 소수의 곱을 저장한 후, 문자열을 순회하면서 알파벳에 대응하는 소수의 나머지 값을 확인한다.  
 나머지 값이 0인 경우, 대응하는 소수로 나누고 문자열이 종료될 때까지 반복한다.  
-"""
-def solve(myStr):
-    mult_primes = sum([NthPrime(i) for i in range(26)])
+```
+def solve(myStr):  
+    mult_primes = sum([NthPrime(i) for i in range(26)])  
     
-    for chr in myStr:
-        curr_prime = NthPrime(ord(chr) - ord("a"))  
+    for chr in myStr:  
+        curr_prime = NthPrime(ord(chr) - ord("a"))   
         if mult_primes % curr_prime != 0:  
-            return False
-        mult_primes //= curr_prime
+            return False  
+        mult_primes //= curr_prime  
     
-    return True
-"""
-</details>
+    return True  
+```
+</details>  
