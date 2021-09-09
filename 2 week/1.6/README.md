@@ -63,3 +63,48 @@ int main()
 
 
 </details>
+	
+	
+	
+김경찬
+<details>
+<summary>접기/펼치기 버튼</summary>  
+
+### 개념:
+1. 임시로 상우 값을 저장해둔다.
+2. 상우에 상좌 값을 대입한다.
+3. 상좌에 하좌 값을 대입한다.
+4. 하좌에 하우 값을 대입한다.
+5. 하우에 1번에서 저장한 값을 대입한다.
+
+열은 N-1 까지 반복하고  
+행은 N/2 까지 반복한다.
+ 
+``` javascript
+const problem = [
+  ["1", "2", "3", "4", "5"],
+  ["1", "2", "3", "4", "5"],
+  ["1", "2", "3", "4", "5"],
+  ["1", "2", "3", "4", "5"],
+  ["1", "2", "3", "4", "5"],
+];
+const rotate = (image) => {
+  const nNum = image.length - 1;
+  let temp = "";
+  image.some((row, rowIdx) => {
+    if (rowIdx >= 2) return true;
+    row.some((col, colIdx) => {
+      if (colIdx >= rowIdx) {
+        if (colIdx > nNum - rowIdx - 1) return true;
+        temp = image[colIdx][nNum - rowIdx];
+        image[colIdx][nNum - rowIdx] = image[rowIdx][colIdx]; // 1
+        image[rowIdx][colIdx] = image[nNum - colIdx][rowIdx];
+        image[nNum - colIdx][rowIdx] = image[nNum - rowIdx][nNum - colIdx];
+        image[nNum - rowIdx][nNum - colIdx] = temp;
+      }
+    });
+  });
+};
+rotate(problem);
+console.log(problem);
+```
