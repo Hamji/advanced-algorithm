@@ -48,7 +48,7 @@ LinkedList<Integer> list = new LinkedList();
 
     public static void main(String args[]){
         int[] linkedList = {7,4,5,6,8,9,1,2,3,3,4,5,6,7,8,9};
-        LinkedList<Integer> list = new LinkedList();
+        LinkedList<Integer> list;
 
         list = createLinkedList(linkedList);
         for(int i = 0 ; i < list.size() ; i++) {
