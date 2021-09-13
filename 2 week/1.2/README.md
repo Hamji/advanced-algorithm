@@ -114,7 +114,7 @@ inline const int strlen(const char *const str)
 using namespace std;
 
 // 32비트 정수에 0x00 바이트가 존재하는가? (비트 핵)
-inline const int32_t u32_contain_zero(const int32_t val)
+inline const uint32_t u32_contain_zero(const uint32_t val)
 {
     // 각 바이트에 대해 0x01을 뺀 뒤, 원래 값에 0x80 비트가 있었던 경우를 제외시키고,
     // 0x00 바이트가 있는 경우 0x01을 빼면 내림(빌림)이 발생한다는 성질을 이용하여,
@@ -126,7 +126,7 @@ inline const int32_t u32_contain_zero(const int32_t val)
 inline const int strlen_perf(const char *const str)
 {
     const char *ptr = str;
-    while ( !u32_contain_zero(*(const int32_t *)ptr) )
+    while ( !u32_contain_zero(*(const uint32_t *)ptr) )
     {
         ptr += 4;
     }
