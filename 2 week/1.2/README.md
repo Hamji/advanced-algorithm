@@ -165,7 +165,7 @@ void reverse(char *str)
 {
     const size_t len        = strlen(str);
     const size_t final_pos  = len - 1;
-    const size_t half_pos   = len / 2;
+    const size_t half_pos   = len >> 1;
     for ( size_t i = 0; i < half_pos; ++i )
     {
         swap(str[i], str[final_pos - i]);
