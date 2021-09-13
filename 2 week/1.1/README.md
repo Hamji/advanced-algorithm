@@ -115,3 +115,34 @@ console.log(isSole("명지대학교")); // true
 
 </details>  
 
+이재명
+<details>
+<summary>접기/펼치기 버튼</summary>
+	
+아이디어
+------
+- 셈 정렬(counting sort) 기법을 응용
+- 문자열에 출현 가능한 문자의 경우의 수가 적어야 함
+  - 문자의 경우의 수가 너무 많다면 문자 정렬 후 앞 문자와 뒷 문자를 비교
+- 구현 코드는 ASCII(7bit) 문자셋을 가정하여 작성함
+	
+구현
+------
+- 언어: Modern C++ (C++11 이상)
+
+``` C++
+const bool has_only_unique_chars(const char *str)
+{
+    int counters[128] { }; // zero-initialized
+    while ( *str )
+    {
+        if ( counters[*str++]++ )
+        {
+            return false;
+        }
+    }
+    return true;
+}
+```
+</details>
+
