@@ -108,3 +108,67 @@ const rotate = (image) => {
 rotate(problem);
 console.log(problem);
 ```
+</details>
+
+이재명
+<details>
+<summary>접기/펼치기 버튼</summary>
+	
+아이디어
+------
+![예시 그림](https://i.postimg.cc/0jg1rg0H/table.png)
+	
+그림에서 알 수 있듯이,
+- N이 짝수일 때는 0 ≤ 행 < N/2, 0 ≤ 열 < N/2에 해당하는 왼쪽-위 4사분면에 대해서 대응하는 4개의 셀을 시프트하면 된다.
+- N이 홀수일 때는 0 ≤ 행 ≤ N/2, 0 ≤ 열 < N/2에 해당하는 왼쪽-위 4사분면에 대해서 대응하는 4개의 셀을 시프트하면 된다.
+	
+구현
+------
+- 언어: Modern C++ (C++11 이상)
+
+``` C++
+#include <cstdint>
+using namespace std;
+
+inline void rotate_cell(int32_t *const arr, const int n, const int row, const int col)
+{
+    int cr = row, cc = col;
+    const int32_t backup = arr[row * n + col];
+
+    for ( int i = 0; i < 3; ++i )
+    {
+        const int nr = n - 1 - cc, nc = cr;
+        arr[cr * n + cc] = arr[nr * n + nc];
+        cr = nr, cc = nc;
+    }
+
+    arr[cr * n + cc] = backup;
+}
+
+void rotate(int32_t *const arr, const int n)
+{
+    const int n_half = n / 2;
+    
+    if ( n % 2 == 0 )
+    {
+        for ( int r = 0; r < n_half; ++r )
+        {
+            for ( int c = 0; c < n_half; ++c )
+            {
+                rotate_cell(arr, n, r, c);
+            }
+        }
+    }
+    else
+    {
+        for ( int r = 0; r <= n_half; ++r )
+        {
+            for ( int c = 0; c < n_half; ++c )
+            {
+                rotate_cell(arr, n, r, c);
+            }
+        }
+    }
+}
+```
+</details>
