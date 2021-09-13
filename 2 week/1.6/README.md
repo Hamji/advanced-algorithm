@@ -147,11 +147,11 @@ inline void rotate_cell(int32_t *const arr, const int n, const int row, const in
 
 void rotate(int32_t *const arr, const int n)
 {
-    const int n_half = n / 2;
+    const int n_half = n >> 1, n_odd = n & 1;
     
-    if ( n % 2 == 0 )
+    if ( n_odd )
     {
-        for ( int r = 0; r < n_half; ++r )
+        for ( int r = 0; r <= n_half; ++r )
         {
             for ( int c = 0; c < n_half; ++c )
             {
@@ -161,7 +161,7 @@ void rotate(int32_t *const arr, const int n)
     }
     else
     {
-        for ( int r = 0; r <= n_half; ++r )
+        for ( int r = 0; r < n_half; ++r )
         {
             for ( int c = 0; c < n_half; ++c )
             {
