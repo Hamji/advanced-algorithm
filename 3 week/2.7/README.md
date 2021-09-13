@@ -21,7 +21,7 @@
 구현
 ------
 - 언어: Modern C++ (C++11 이상)
-- https://ideone.com/5RX3T0
+- https://ideone.com/smVMQV
 
 ``` C++
 #include <cstdio>
@@ -36,27 +36,27 @@ public:
     {
     	friend class SinglyLinkedList;
     	
-        public:
-            Item() { }
-            Item(const T init_value) : value(init_value) { }
-            virtual ~Item() { }
+    public:
+        Item() { }
+        Item(const T init_value) : value(init_value) { }
+        virtual ~Item() { }
 
-            Item *get_next()
-            {
-                return next;
-            }
-            const T get_value()
-            {
-                return value;
-            }
-            void set_value(const T new_value)
-            {
-                value = new_value;
-            }
+        Item *get_next()
+        {
+            return next;
+        }
+        const T get_value()
+        {
+            return value;
+        }
+        void set_value(const T new_value)
+        {
+            value = new_value;
+        }
 
-        private:
-            Item *next { nullptr };
-            T value { };
+    private:
+        Item *next { nullptr };
+        T value { };
     };
 
     SinglyLinkedList() { }
