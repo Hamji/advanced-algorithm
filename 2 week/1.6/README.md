@@ -130,14 +130,14 @@ console.log(problem);
 #include <cstdint>
 using namespace std;
 
-inline void rotate_cell(int32_t *const arr, const int n, const int row, const int col)
+inline void rotate_cell(int32_t *const arr, const unsigned int n, const unsigned int row, const unsigned int col)
 {
-    int cr = row, cc = col;
+    unsigned int cr = row, cc = col;
     const int32_t backup = arr[row * n + col];
 
     for ( int i = 0; i < 3; ++i )
     {
-        const int nr = n - 1 - cc, nc = cr;
+        const unsigned int nr = n - 1 - cc, nc = cr;
         arr[cr * n + cc] = arr[nr * n + nc];
         cr = nr, cc = nc;
     }
@@ -145,15 +145,15 @@ inline void rotate_cell(int32_t *const arr, const int n, const int row, const in
     arr[cr * n + cc] = backup;
 }
 
-void rotate(int32_t *const arr, const int n)
+void rotate(int32_t *const arr, const unsigned int n)
 {
-    const int n_half = n >> 1, n_odd = n & 1;
+    const unsigned int n_half = n >> 1, n_odd = n & 1;
     
     if ( n_odd )
     {
-        for ( int r = 0; r <= n_half; ++r )
+        for ( unsigned int r = 0; r <= n_half; ++r )
         {
-            for ( int c = 0; c < n_half; ++c )
+            for ( unsigned int c = 0; c < n_half; ++c )
             {
                 rotate_cell(arr, n, r, c);
             }
@@ -161,9 +161,9 @@ void rotate(int32_t *const arr, const int n)
     }
     else
     {
-        for ( int r = 0; r < n_half; ++r )
+        for ( unsigned int r = 0; r < n_half; ++r )
         {
-            for ( int c = 0; c < n_half; ++c )
+            for ( unsigned int c = 0; c < n_half; ++c )
             {
                 rotate_cell(arr, n, r, c);
             }
