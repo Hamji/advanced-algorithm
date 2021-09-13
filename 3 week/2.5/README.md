@@ -69,4 +69,6 @@ public class Week2_5 {
 }
 ```
 
-</details>
+</details> 
+    
+[황규도.ipynb](https://github.com/Hamji/advanced-algorithm/blob/main/3%20week/2.5/hkd2-5.ipynb)      
