@@ -165,3 +165,88 @@ def remove_dups_with_no_buffer(self):
     
 ```
 </details>
+김경찬
+<details>
+<summary>접기/펼치기 버튼</summary>
+ 
+### 개념
+M개의 노드를 갖는 링크드 리스트를 순회하면서  
+    N번째 노드에 대해 N+1번째부터 M번째까지 중복검사를 하면서 중복시 해당 노드를 제거한다. 
+    
+ ---
+ 
+#### 문제풀이
+  
+``` javascript
+// 링크드리스트 구현부분
+class Node {
+  constructor(data, next = null) {
+    this.data = data;
+    this.next = next;
+  }
+}
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+  insertLast(node) {
+    if (this.head) {
+      let current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = node;
+    } else {
+      this.head = node;
+    }
+  }
+  delete(node) {
+    const prev = this.findPrev(node);
+    prev.next = prev.next.next;
+  }
+  findPrev(node) {
+    let cur = this.head;
+    while (cur.next != null && cur.next != node) {
+      cur = cur.next;
+    }
+    return cur;
+  }
+    // 정답
+  deleteDuplicate() {
+    let current1 = this.head;
+    while (current1) {
+      let current2 = current1.next;
+
+      while (current2) {
+        if (current2.data == current1.data) {
+          this.delete(current2);
+        }
+        current2 = current2.next;
+      }
+      current1 = current1.next;
+    }
+  }
+  print() {
+    let cur = this.head;
+    let result = "";
+    while (cur != null) {
+      result += `${cur.data}=>`;
+      cur = cur.next;
+    }
+    console.log(result);
+  }
+}
+// 문제 초기화
+const linkedList = new LinkedList();
+linkedList.insertLast(new Node("A"));
+linkedList.insertLast(new Node("B"));
+linkedList.insertLast(new Node("C"));
+linkedList.insertLast(new Node("A"));
+linkedList.insertLast(new Node("D"));
+linkedList.insertLast(new Node("E"));
+linkedList.insertLast(new Node("D"));
+linkedList.insertLast(new Node("E"));
+
+linkedList.print(); // A=>B=>C=>A=>D=>E=>D=>E=>
+linkedList.deleteDuplicate();
+linkedList.print(); // A=>B=>C=>D=>E=>
