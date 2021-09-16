@@ -127,3 +127,41 @@ for _ in range(10000):
 
 
 </details>
+    
+---
+정민혁
+<details>
+<summary>접기/펼치기 버튼</summary>
+    
+``` Python    
+    
+class Node:
+    def __init__(self, value, next_node):
+        self.value = value
+        self.next = next_node
+   
+class LinkedList:
+    def __init__(self):
+        self.head = Node(None, None)
+        self.cur = None
+    
+def remove_dups_with_no_buffer(self):
+        self.cur = self.head
+        pointer = self.head.next
+        
+
+        while True:
+            self.cur = runner
+            while self.cur.next is not None:
+                if pointer.value == self.cur.next.value:
+                    self.cur.next = self.cur.next.next
+                else:
+                    self.cur = self.cur.next
+            if pointer.next is None:
+                break
+            else:
+                pointer = pointer.next
+            
+    
+```
+</details>
