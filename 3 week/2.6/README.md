@@ -12,11 +12,11 @@
 
 황규도
 <details>
-  
+ 
 ## Concept 1:
   방문한 노드 저장 후, 매 Iteration 마다 노드의 방문 여부를 체크  
   O(N^2), extra memory  
-  1. 저장 방식(Key-Value, HashTable)에 따라 O(N)까지는 가능?  
+  1. 저장 방식(Key-Value, HashTable, 그래프, ... etc)에 따라 O(N)/O(V+E)까지 가능  
   
 <summary>접기/펼치기 버튼</summary>
   
