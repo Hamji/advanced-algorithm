@@ -8,3 +8,31 @@
 > 입력: A->B->C->D->E->C (E의 Next 노드가 D 앞에 있는 C로 설정되어 있다)  
 > 출력: C  
 ---
+ 
+
+<details>
+  
+## Concept 1:
+  방문한 노드 저장 후, 매 Iteration 마다 노드의 방문 여부를 체크  
+  O(N^2), extra memory  
+  1. 저장 방식(Key-Value, HashTable)에 따라 O(N)까지는 가능?  
+  
+<summary>접기/펼치기 버튼</summary>
+  
+``` Python
+
+# ========================================
+# O(N^2), 심지어 별도의 space 까지!
+# ========================================
+def naive_solve(list: LinkedList) -> Node:
+    visted = []
+    for node in list:
+        if node in visted:
+            return node
+        visted.append(node)
+    return None
+
+
+```
+
+</details>
