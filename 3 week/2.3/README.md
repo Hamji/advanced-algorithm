@@ -184,3 +184,70 @@ def solve(linkedlist: LinkedList, k: int) -> LinkedList:
 ```
 
 </details>
+    
+김경찬
+<details>
+<summary>접기/펼치기 버튼</summary>
+ 
+### 개념
+삭제할 노드의 Next를 Next Node의 Next로 대입해주고,  
+    삭제할 노드의 Data를 Next Node의 Data로 대입해주면 된다.
+    
+ ---
+ 
+#### 문제풀이
+  
+``` javascript
+// 링크드리스트 구현부분
+class Node {
+  constructor(data, next = null) {
+    this.data = data;
+    this.next = next;
+  }
+}
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+  insertLast(node) {
+    if (this.head) {
+      let current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = node;
+    } else {
+      this.head = node;
+    }
+    }
+    //정답부분
+  delete(node) {
+    node.data = node.next.data;
+    node.next = node.next.next;
+  }
+  print() {
+    let cur = this.head;
+    let result = "";
+    while (cur != null) {
+      result += `${cur.data}=>`;
+      cur = cur.next;
+    }
+    console.log(result);
+  }
+}
+// 문제 초기화
+const linkedList = new LinkedList();
+const node1 = new Node("A");
+const node2 = new Node("B");
+const node3 = new Node("C");
+const node4 = new Node("D");
+const node5 = new Node("E");
+linkedList.insertLast(node1);
+linkedList.insertLast(node2);
+linkedList.insertLast(node3);
+linkedList.insertLast(node4);
+linkedList.insertLast(node5);
+
+linkedList.print(); // A=>B=>C=>D=>E=>
+linkedList.delete(node3);
+linkedList.print(); // A=>B=>D=>E=>
