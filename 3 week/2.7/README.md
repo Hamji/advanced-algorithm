@@ -139,3 +139,52 @@ int main()
 }
 ```
 </details>
+
+	
+김건희
+<details>
+<summary>접기/펼치기 버튼</summary>
+
+```
+stack 과 queue에 링크드 리스트의 요소 들을 넣어준다. O(n)
+stack 과 queue에서 하나씩 꺼내면서 서로 같은 요소인지 비교해준다 O(n)
+따라서 O(n+n) = O(2n) = O(n)
+```
+	
+``` python3
+	
+	import Node
+
+print("input : ", end = '')
+string = input()
+
+nds = Node.makingStrNode(string)
+
+stack = []
+queue = []
+
+temp = nds
+Node.printNode(nds)
+print("=====sentence=====")
+
+#### stack 과 queue에 하나씩 넣어주기 
+while temp != None:
+    stack.append(temp.value)
+    queue.append(temp.value)
+    temp = temp.next
+
+#### stack 과 queue에서 하나씩 꺼내서 비교
+for i in queue:
+    val = stack.pop()
+    if i != val:
+        print("False")
+        exit()
+
+print("True")
+
+	
+	
+```
+
+</details>
+
