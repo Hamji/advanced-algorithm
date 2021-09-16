@@ -104,4 +104,83 @@ int main()
 
 ```
   
+</details>  
+
+황규도
+<details> 
+<summary>접기/펼치기 버튼</summary>
+
+## Concept  
+    1. K 번째 노드에 K + 1 번째 노드의 값을 복사한다.  
+    2. K 번째 노드의 next 는 K + 2 번째 노드의 주소를 저장한다.  
+    
+``` python
+
+class LinkedList:
+    class Node:
+        def __init__(self, data, next=None):
+            self.data = data
+            self.next = next
+
+    class Iterator:
+        def __init__(self, outer):
+            self.outer = outer.head
+
+        def __iter__(self):
+            return self
+
+        def __next__(self):
+            if self.outer is None:
+                raise StopIteration
+
+            data = self.outer
+            self.outer = self.outer.next
+
+            return data
+
+    def __init__(self):
+        self.head = None
+
+    def __iter__(self):
+        return self.Iterator(self)
+
+    def add(self, data):
+        if self.head is None:
+            self.head = self.Node(data)
+        else:
+            node = self.head
+            while node.next:
+                node = node.next
+            node.next = self.Node(data)
+
+        return self
+
+    def __str__(self):
+        result = ""
+        curr = self.head
+        while curr is not None:
+            result += str(curr.data) + "\n"
+            curr = curr.next
+        return result
+
+# ======================================
+# 중간에 있는 노드 삭제
+# ======================================
+def solve(linkedlist: LinkedList, k: int) -> LinkedList:
+    iter = linkedlist.__iter__()
+    curr_node = None
+    while k > 0:
+        curr_node = next(iter)
+        k -= 1
+        
+    next_node = curr_node.next
+    curr_node.data = next_node.data
+    curr_node.next = next_node.next
+
+    return linkedlist
+
+
+
+```
+
 </details>
