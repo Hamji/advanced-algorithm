@@ -151,7 +151,7 @@ def remove_dups_with_no_buffer(self):
         
 
         while True:
-            self.cur = runner
+            self.cur = pointer
             while self.cur.next is not None:
                 if pointer.value == self.cur.next.value:
                     self.cur.next = self.cur.next.next
