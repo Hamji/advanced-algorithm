@@ -102,6 +102,12 @@ node5.next = node3;
 linkedList.head = node1;
 
 console.log(solution(linkedList));
+ /* 
+ Node {
+  data: 'C',
+  next: Node { data: 'D', next: Node { data: 'E', next: [Circular] } }
+}
+ */
 
 
 
