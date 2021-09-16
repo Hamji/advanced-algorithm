@@ -78,7 +78,7 @@ def solve_naive(unsorted: LinkedList) -> LinkedList:
 
 
 # ========================================================
-# O(N) solve, 버퍼 X
+# O(N) solve, 버퍼 ?
 # ========================================================
 def solve(unsorted: LinkedList) -> LinkedList:
     alphabet = 0
