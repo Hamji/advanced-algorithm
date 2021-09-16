@@ -37,3 +37,85 @@ def naive_solve(list: LinkedList) -> Node:
 ```
 
 </details>
+
+김경찬
+<details>
+<summary>접기/펼치기 버튼</summary>
+ 
+### 개념
+#### 1. 노드에 유일한 문자열이 들어있다면: O(n)
+ Charset의 범위만큼의 배열을 만들어 링크드리스트를 순회하면서 노드 데이터의 문자 코드를 인덱스로하여 발견여부를 체크한다.  
+ 발견 했으면 그 노드를 반환한다.
+ 
+#### 2. 노드끼리 중복된 문자열이 허용된다면: O(n^2) 예상
+ Set 자료구조에 노드의 주소값을 넣어둔다. 링크드리스트를 순회하면서 노드의 주소값이 Set에 있는지 체크한다.  
+ Set에 있다면 해당 노드를 반환한다. 
+ 
+ ---
+ 
+#### 문제풀이
+  
+``` javascript
+// 자바스크립트는 포인터가 없어 부득이하게 2번구현 방식이지만 문자열이 유일하다고 가정한다.
+// 링크드리스트 구현부분
+class Node {
+  constructor(data, next = null) {
+    this.data = data;
+    this.next = next;
+  }
+}
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+  insertLast(node) {
+    if (this.head) {
+      let current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = node;
+    } else {
+      this.head = node;
+    }
+  }
+}
+
+// 정답부분
+function solution(input) {
+  const set = new Set();
+  let cur = input.head;
+  while (cur) {
+    if (set.has(cur.data)) {
+      return cur;
+    } else {
+      set.add(cur.data);
+      cur = cur.next;
+      if (cur == null) {
+        return null;
+      }
+    }
+  }
+}
+
+// 문제 초기화
+const linkedList = new LinkedList();
+const node1 = new Node("A");
+const node2 = new Node("B");
+const node3 = new Node("C");
+const node4 = new Node("D");
+const node5 = new Node("E");
+node1.next = node2;
+node2.next = node3;
+node3.next = node4;
+node4.next = node5;
+node5.next = node3;
+linkedList.head = node1;
+
+console.log(solution(linkedList));
+
+
+
+```
+
+</details>
