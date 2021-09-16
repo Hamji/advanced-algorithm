@@ -10,6 +10,7 @@
 ---
  
 
+황규도
 <details>
   
 ## Concept 1:
