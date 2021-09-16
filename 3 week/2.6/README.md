@@ -68,17 +68,6 @@ class LinkedList {
   constructor() {
     this.head = null;
   }
-  insertLast(node) {
-    if (this.head) {
-      let current = this.head;
-      while (current.next) {
-        current = current.next;
-      }
-      current.next = node;
-    } else {
-      this.head = node;
-    }
-  }
 }
 
 // 정답부분
