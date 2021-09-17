@@ -256,6 +256,6 @@ linkedList.insertLast(node4);
 linkedList.insertLast(node5);
 
 linkedList.print(); // A=>B=>C=>D=>E=>
-linkedList.delete(node4);
+linkedList.delete(node3);
 linkedList.print(); // A=>B=>D=>E=>
 ```
