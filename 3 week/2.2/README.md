@@ -5,6 +5,10 @@
 <details>
 <summary>접기/펼치기 버튼</summary>
 
+```
+   링크드 리스트를 순회하면서 stack에 값을 담아주고 뒤에서 k번째만큼 pop 해주는 방식으로  
+```
+    
 ``` python3
 
 class Node:
