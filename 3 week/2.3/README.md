@@ -219,11 +219,18 @@ class LinkedList {
     } else {
       this.head = node;
     }
-    }
-    //정답부분
+  }
+  //정답부분
   delete(node) {
-    node.data = node.next.data;
-    node.next = node.next.next;
+    const prev = this.findPrev(node);
+    prev.next = prev.next.next;
+  }
+  findPrev(node) {
+    let cur = this.head;
+    while (cur.next != null && cur.next != node) {
+      cur = cur.next;
+    }
+    return cur;
   }
   print() {
     let cur = this.head;
@@ -236,12 +243,12 @@ class LinkedList {
   }
 }
 // 문제 초기화
-const linkedList = new LinkedList();
-const node1 = new Node("A");
-const node2 = new Node("B");
-const node3 = new Node("C");
-const node4 = new Node("D");
-const node5 = new Node("E");
+let linkedList = new LinkedList();
+let node1 = new Node("A");
+let node2 = new Node("B");
+let node3 = new Node("C");
+let node4 = new Node("D");
+let node5 = new Node("E");
 linkedList.insertLast(node1);
 linkedList.insertLast(node2);
 linkedList.insertLast(node3);
@@ -249,5 +256,6 @@ linkedList.insertLast(node4);
 linkedList.insertLast(node5);
 
 linkedList.print(); // A=>B=>C=>D=>E=>
-linkedList.delete(node3);
+linkedList.delete(node4);
 linkedList.print(); // A=>B=>D=>E=>
+```
