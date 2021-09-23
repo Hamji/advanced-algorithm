@@ -17,14 +17,27 @@
 ## 2개의 Queue? 
  - Dog Queue, Cat Queue
  - `enqueue`   : O(1)
- - `dequeueAny`: O(1)
+ - `dequeueAny`: O(1)  
+   - 순서를 저장할 buffer OR 입양 시간을 기록
  - `dequeueDog`: O(1)
  - `dequeueCat`: O(1)
 
-## 1개의 Queue로 가능할까?  
- - `dequeueAny`가 더 자연스럽게 표현 가능.  
- - O(1) 보장하려면 Queue 응용이 필요.
- ```python
+## 1개의 Queue?  
+1. dequeueX를 O(1) ~ O(N)으로 탐색   
+1개의 Queue에 `enqueue`하고, `dequeueX`를 탐색 기법으로.  
+
+
+2. Array 방식과 LinkedList 방식의 Queue 혼용  
+1개의 Array Queue에 Node를 넣는 방식  
+ - Animal Queue
+ - `enqueue`   : O(1)
+ - `dequeueAny`: O(1)  
+ - `dequeueDog`: O(1)
+ - `dequeueCat`: O(1)
+ 
+
+
+```python
 class Cat:
     def __init__(self, id):
         self.id = id
@@ -55,20 +68,25 @@ class Shelter:
     def __init__(self):
         self.dog = Queue()
         self.cat = Queue()
+        self.animal = Queue()
     
     def enqueue(self, data):
         if type(data) is Dog: self.dog.enqueue(data)
         else: self.cat.enqueue(data)
+        self.animal.enqueue(data)
             
     def dequeueAny(self):
-        import random
-        if random.randint(1,2) == 1: return self.dog.dequeue()
-        else: return self.cat.dequeue()
+        animal = self.animal.dequeue()
+        if type(animal) is Dog: self.dog.dequeue()
+        else: self.cat.dequeue()
+        return animal
     
     def dequeueDog(self):
+        self.animal.dequeue()
         return self.dog.dequeue()
     
     def dequeueCat(self):
+        self.animal.dequeue()
         return self.cat.dequeue()
 ```
 
@@ -95,16 +113,18 @@ print(shelter.dequeueDog())
 print(shelter.dequeueCat())
 ```
 
-    [*] cat : CD
     [*] dog : DE
     [*] dog : DD
+    [*] cat : CD
     [*] dog : DC
     [*] cat : CC
     
 
 
 ```python
+
 ```
+
 </details>
 
 
