@@ -153,7 +153,8 @@ for i in range(20):
 <details>
 <summary>접기/펼치기 버튼</summary>
 
-```javaimport java.util.Stack;
+```java
+import java.util.Stack;
 
 public class SetOfStacks {
 
