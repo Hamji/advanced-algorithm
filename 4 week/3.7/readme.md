@@ -10,8 +10,8 @@
 
 
 
-
-<details> 황규도
+황규도
+<details> 
 <summary>접기/펼치기 버튼</summary>
 
 ## 2개의 Queue? 
