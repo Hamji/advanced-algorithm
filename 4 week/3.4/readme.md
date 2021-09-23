@@ -79,20 +79,70 @@ print(A, B, C)
     [] [] [8, 7, 6, 5, 4, 3, 2, 1]
     
 
+</details>
 
-```python
+수원
+
+<details>
+<summary>접기/펼치기 버튼</summary>
+
+```java
+
+import java.util.Stack;
+
+public class hanoi {
+    public Stack<Integer> from;
+    public Stack<Integer> mid;
+    public Stack<Integer> to;
+
+    hanoi(Integer... integers) {
+
+        from = new Stack<>();
+        mid = new Stack<>();
+        to = new Stack<>();
+
+        for (int i = integers.length - 1; i >= 0; i--)
+            from.push(integers[i]);
+    }
+
+    public void print_stack(Stack<Integer> stack) {
+        System.out.print("BOTTOM ->");
+        for (Integer elem : stack) {
+            System.out.print(" " + elem + " -> ");
+        }
+        System.out.println("TOP");
+    }
+
+    public void print_all() {
+        System.out.print("From  |");
+        print_stack(from);
+        System.out.print("Mid   |");
+        print_stack(mid);
+        System.out.print("To    |");
+        print_stack(to);
+        System.out.println("");
+    }
+
+    public void solve_hanoi(Integer n, Stack<Integer> from, Stack<Integer> to, Stack<Integer> mid) {
+        if (n == 1) {
+            to.push(from.pop());
+            return;
+        }
+        solve_hanoi(n - 1, from, mid, to);
+        to.push(from.pop());
+        solve_hanoi(n - 1, mid, to, from);
+    }
+
+    public static void main(String[] args) {
+        hanoi h = new hanoi(1, 2, 3, 4, 5);
+        h.print_all();
+        h.solve_hanoi(5, h.from, h.to, h.mid);
+        h.print_all();
+    }
+}
 
 ```
 
-
-```python
-
-```
-
-
-```python
-
-```
 
 
 </details>
