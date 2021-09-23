@@ -148,3 +148,57 @@ for i in range(20):
 
 
 </details>
+
+이혁진
+<details>
+<summary>접기/펼치기 버튼</summary>
+
+```javaimport java.util.Stack;
+
+public class SetOfStacks {
+
+    public static int MAX_STACK_SIZE = 10;
+    public static Stack<String>[] stack = new Stack[100];
+    public static int PUSH_INDEX = 0;
+    public static int POP_INDEX;
+
+    SetOfStacks() {
+        stack[0] = new Stack<>();
+    }
+
+    public String pop() {
+        if(stack[POP_INDEX].empty()){
+            POP_INDEX--;
+            return stack[POP_INDEX].pop();
+        }else {
+            return stack[POP_INDEX].pop();
+        }
+    }
+
+    public void push(String str){
+        if(stack[PUSH_INDEX].size() == MAX_STACK_SIZE){
+            PUSH_INDEX++;
+            stack[PUSH_INDEX] = new Stack<>();
+            stack[PUSH_INDEX].push(str);
+        } else{
+            stack[PUSH_INDEX].push(str);
+        }
+        POP_INDEX = PUSH_INDEX;
+    }
+
+    public boolean isEmpty(){
+        if(POP_INDEX == 0 && stack[POP_INDEX].empty()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String popAt(int index){
+        return stack[index].pop();
+    }
+
+}
+
+```
+</details>
