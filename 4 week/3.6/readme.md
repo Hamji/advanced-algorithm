@@ -214,3 +214,106 @@ print(descendingStack)
 
 
 </details>
+
+이재명
+<details>
+<summary>접기/펼치기 버튼</summary>
+
+```C++
+#include <cstdio>
+#include <cstdlib>
+#include <stack>
+
+using namespace std;
+
+template <class T>
+inline void push(stack<T> &s, const T val)
+{
+    s.push(val);
+}
+
+template <class T>
+inline const T pop(stack<T> &s)
+{
+    const T ret = s.top();
+    s.pop();
+    return ret;
+}
+
+template <class T>
+inline const T peek(const stack<T> &s)
+{
+    return s.top();
+}
+
+template <class T>
+inline const bool isEmpty(const stack<T> &s)
+{
+    return s.empty();
+}
+
+void sort(stack<int> &in, stack<int> &out)
+{
+    if ( isEmpty(in) ) return;
+    push(out, pop(in));
+
+    while ( !isEmpty(in) )
+    {
+        if ( peek(in) >= peek(out) )
+        {
+            push(out, pop(in));
+        }
+        else
+        {
+            const auto val = pop(in);
+
+            int cnt = 0;
+            while ( !isEmpty(out) && peek(out) > val )
+            {
+                push(in, pop(out));
+                ++cnt;
+            }
+            push(out, val);
+            while ( cnt-- )
+            {
+                push(out, pop(in));
+            }
+        }
+    }
+}
+
+void print_out(stack<int> s)
+{
+    bool space_needed = false;
+    printf("[");
+    while ( !isEmpty(s) )
+    {
+        printf("%s%02d", space_needed ? " " : "", pop(s));
+        space_needed = true;
+    }
+    printf("]");
+}
+
+int main()
+{
+    stack<int> target;
+    srand(100);
+    for ( int i = 0; i < 10; ++i )
+    {
+        push(target, rand() % 100);
+    }
+
+    printf("Before: ");
+    print_out(target);
+    printf("\n");
+
+    stack<int> result;
+    sort(target, result);
+
+    printf("After: ");
+    print_out(result);
+    printf("\n");
+
+    return 0;
+}
+```
