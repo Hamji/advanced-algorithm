@@ -180,11 +180,10 @@ for i in range(20):
         self.first.append(val)
 
     def pop(self):
-        for i in range(len(self.first)):
-            self.second.append(self.first.pop())
+        if not self.second:
+            for i in range(len(self.first)):
+                self.second.append(self.first.pop())
         result = self.second.pop()
-        for i in range(len(self.second)):
-            self.first.append(self.second.pop())
         return result
 
 if __name__ == "__main__":
