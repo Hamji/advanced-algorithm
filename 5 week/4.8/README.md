@@ -18,7 +18,7 @@
 #### 문제풀이
   
 ``` javascript
- const inOrder = (tree, idx) => {
+const inOrder = (tree, idx) => {
   const result = [];
   function traverse(tree, idx) {
     if (tree[idx]) {
@@ -28,7 +28,7 @@
     }
   }
   traverse(tree, idx);
-  return result.join("");
+  return result.join(">");
 };
 
 const isSubTree = (sub, target) => {
@@ -39,30 +39,31 @@ const isSubTree = (sub, target) => {
       traverseArray[i] = target[i];
     } else if (target[i * 2] || target[i * 2 + 1]) {
       // 현재 노드가 Leaf가 아닐 경우
-      traverseArray[i] = `${traverseArray[i * 2]}${target[i]}${
+      traverseArray[i] = `${traverseArray[i * 2]}>${target[i]}>${
         traverseArray[i * 2 + 1]
       }`;
     }
   }
+  console.log(traverseArray);
   return traverseArray.includes(inOrder(sub, 1));
 };
 
 const T1 = [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 const T2 = [null, 3, 6, 7, 12, 13, 14, 15];
 
+console.log(inOrder(T2, 1)); // 12>6>13>3>14>7>15
 console.log(isSubTree(T2, T1));
- /* T1의 모든 InOrder값을 DP로 구한다.
- 결과: 
- [
+/* T1의 모든 InOrder값을 DP로 구한다.
+[
   <1 empty item>,
-  '1681749210511112613314715',
-  '1681749210511',
-  '12613314715',
-  '1681749',
-  '10511',
-  '12613',
-  '14715',
-  '16817',
+  '16>8>17>4>9>2>10>5>11>1>12>6>13>3>14>7>15',
+  '16>8>17>4>9>2>10>5>11',
+  '12>6>13>3>14>7>15',
+  '16>8>17>4>9',
+  '10>5>11',
+  '12>6>13',
+  '14>7>15',
+  '16>8>17',
   9,
   10,
   11,
@@ -72,7 +73,8 @@ console.log(isSubTree(T2, T1));
   15,
   16,
   17
-]*/
+]
+*/
 
 ```
 
