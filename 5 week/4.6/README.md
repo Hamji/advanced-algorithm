@@ -14,24 +14,22 @@
 # 경우의 수
 #   case 1: 좌측 자식이 있는 경우
 #     --> return Left(x)
-#   case 2: 자식이 없는 경우
-#     case 2.1: 좌측의 좌측인 경우
+#   case 2: 좌측이 없는 경우
+#         (부모-나 조상-부모)
+#     case 2.1: (좌, X)인 경우
 #        --> return Right(Parent(x))
-#     case 2.2: 좌측의 우측인 경우
-#        --> return Left(Parent(x))
-#     case 2.3: 우측의 좌측인 경우
+#     case 2.3: (우, 좌)인 경우
 #        --> return Left(Right(Parent(Parent(x))))
-#     case 2.4: 우측의 우측인 경우
+#     case 2.4: (우, 우)인 경우
 #        --> 
 #            1. 2.3 case까지 Parent(x)
 #            2. 2.3 case 실행한 후, (1) 반복한 만큼 Left 연산
 def nextNode(x):
-    if Left(x) is not None: return Left(x)
-    elif Left(x) is None:
-        if Left(Parent(Parent(x))) == Parent(x) and Left(Parent(x)) == self: return Right(Parent(x))
-        elif Left(Parent(Parent(x)) == Parent(x) and Right(Parent(x)) == self: return Left(Parent(x))
-        elif Right(Parent(Parent(x)) == Parent(x) and Left(Parent(x)) == self: return Left(Right(Parent(Parent(x))))
-        else: return Left(nextNode(x))
+    visit(x)
+    if Left(x) is not None and !visited(Left(x)): return Left(x)
+    elif Left(Parent(x)) == self: return Right(Parent(x))
+    elif Left(Parent(Parent(x))) == Parent(x) and Right(Parent(x)) == self: return Left(Right(Parent(Parent(x))))
+    else: return Left(nextNode(Parent(x))) 
     
-
+```
 </details>
