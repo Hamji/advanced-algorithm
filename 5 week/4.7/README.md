@@ -14,13 +14,18 @@
 // The function that computes the depth of a given node
 function get_depth(node)
 {
-    var depth = 0; // let the depth of the root node is zero
-    while ( node.parent() ) // traverse until its parent does not exist
+    // Let the depth of the root node is zero
+    var depth = 0;
+    
+    // Traverse until its parent does not exist
+    while ( node.parent() )
     {
         ++depth;
         node = node.parent();
     }
-    return depth; // return the computed depth
+    
+    // Return the computed depth
+    return depth;
 }
 
 // The function we want to write
