@@ -55,7 +55,7 @@ const T2 = [null, 3, 6, 7, 12, 13, 14, 15];
 
 // console.log(inOrder(T2, 1)); // 12>6>13>3>14>7>15
 console.log(isSubTree(T2, T1));
-/* T1의 모든 InOrder값을 DP로 구한다.
+/*
 [
   <1 empty item>,
   '16>8>17>4>18>9>2>10>5>11>1>12>6>13>3>14>7>15',
