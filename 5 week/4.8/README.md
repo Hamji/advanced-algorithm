@@ -16,7 +16,8 @@
  ---
  
 #### 문제풀이
-  
+<img width="800" src="https://user-images.githubusercontent.com/8155815/137363389-82014900-34b2-495f-812d-74c4f027f081.png">
+ 
 ``` javascript
 const inOrder = (tree, idx) => {
   const result = [];
@@ -35,20 +36,21 @@ const isSubTree = (sub, target) => {
   // 트리의 모든 InOrder값을 DP로 구한다.
   const traverseArray = [];
   for (let i = target.length - 1; i > 0; i--) {
-    if (!(target[i * 2] && target[i * 2 + 1])) {
+    if (!target[i * 2] && !target[i * 2 + 1]) {
       // 현재 노드가 Leaf일 경우
       traverseArray[i] = target[i];
     } else if (target[i * 2] || target[i * 2 + 1]) {
       // 현재 노드가 Leaf가 아닐 경우
-      traverseArray[i] = `${traverseArray[i * 2]}>${target[i]}>${
-        traverseArray[i * 2 + 1]
-      }`;
+      traverseArray[i] =
+        (traverseArray[i * 2] ? traverseArray[i * 2] + ">" : "") +
+        target[i] +
+        (traverseArray[i * 2 + 1] ? ">" + traverseArray[i * 2 + 1] : "");
     }
   }
   return traverseArray.includes(inOrder(sub, 1));
 };
 
-const T1 = [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+const T1 = [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 const T2 = [null, 3, 6, 7, 12, 13, 14, 15];
 
 // console.log(inOrder(T2, 1)); // 12>6>13>3>14>7>15
@@ -56,15 +58,15 @@ console.log(isSubTree(T2, T1));
 /* T1의 모든 InOrder값을 DP로 구한다.
 [
   <1 empty item>,
-  '16>8>17>4>9>2>10>5>11>1>12>6>13>3>14>7>15',
-  '16>8>17>4>9>2>10>5>11',
+  '16>8>17>4>18>9>2>10>5>11>1>12>6>13>3>14>7>15',
+  '16>8>17>4>18>9>2>10>5>11',
   '12>6>13>3>14>7>15',
-  '16>8>17>4>9',
+  '16>8>17>4>18>9',
   '10>5>11',
   '12>6>13',
   '14>7>15',
   '16>8>17',
-  9,
+  '18>9',
   10,
   11,
   12,
@@ -72,10 +74,12 @@ console.log(isSubTree(T2, T1));
   14,
   15,
   16,
-  17
+  17,
+  18
 ]
 */
 
 ```
+
 
 </details>
