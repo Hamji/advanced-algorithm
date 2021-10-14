@@ -32,6 +32,7 @@ const inOrder = (tree, idx) => {
 };
 
 const isSubTree = (sub, target) => {
+  // 트리의 모든 InOrder값을 DP로 구한다.
   const traverseArray = [];
   for (let i = target.length - 1; i > 0; i--) {
     if (!(target[i * 2] && target[i * 2 + 1])) {
@@ -44,14 +45,13 @@ const isSubTree = (sub, target) => {
       }`;
     }
   }
-  console.log(traverseArray);
   return traverseArray.includes(inOrder(sub, 1));
 };
 
 const T1 = [null, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 const T2 = [null, 3, 6, 7, 12, 13, 14, 15];
 
-console.log(inOrder(T2, 1)); // 12>6>13>3>14>7>15
+// console.log(inOrder(T2, 1)); // 12>6>13>3>14>7>15
 console.log(isSubTree(T2, T1));
 /* T1의 모든 InOrder값을 DP로 구한다.
 [
