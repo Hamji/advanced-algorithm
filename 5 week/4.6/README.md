@@ -8,7 +8,7 @@
 <details> 황규도
 <summary>접기/펼치기 버튼</summary>
 
-![문제](attachment:image.png)
+![문제](https://github.com/Hamji/advanced-algorithm/blob/main/5%20week/4.6/binaryTree.png)
 ```python
 # 완전 이진 트리인 경우
 # 경우의 수
