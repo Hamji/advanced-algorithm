@@ -11,7 +11,7 @@
 ```JavaScript
 // Pseudocode in JS style
 
-// The function that computes the depth of a given node
+// A function that computes the depth of a given node
 function get_depth(node)
 {
     // Let the depth of the root node is zero
