@@ -16,8 +16,8 @@
  ---
  
 #### 문제풀이
-<img width="800" src="https://user-images.githubusercontent.com/8155815/137363389-82014900-34b2-495f-812d-74c4f027f081.png">
- 
+<img width="800" src="https://user-images.githubusercontent.com/8155815/137364708-5ac882c1-c7fa-4ea7-bd40-e0826ca2c88a.png">
+
 ``` javascript
 const inOrder = (tree, idx) => {
   const result = [];
