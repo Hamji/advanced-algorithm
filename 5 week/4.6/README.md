@@ -28,7 +28,7 @@ def nextNode(x):
     visit(x)
     if Left(x) is not None and !visited(Left(x)): return Left(x)
     elif Left(Parent(x)) == self: return Right(Parent(x))
-    elif Left(Parent(Parent(x))) == Parent(x) and Right(Parent(x)) == self: return Left(Right(Parent(Parent(x))))
+    elif Left(Parent(Parent(x))) == Parent(x) and Right(Parent(x)) == self: return Left(nextNode(Parent(x)))
     else: return Left(nextNode(Parent(x))) 
     
 ```
