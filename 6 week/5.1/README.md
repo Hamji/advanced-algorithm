@@ -58,8 +58,7 @@ def solve(N, M, i, j):
     return (N & ~mask) | (M << i)
 
 def toBinary(N):
-    if N == 0: return ""
-    else: return printBinary(N//2) + str(N % 2)
+    return str(bin(N))[2:]
     
 ```
 
