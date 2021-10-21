@@ -46,3 +46,29 @@ int main(void) {
 ```
 
 </details>
+  
+황규도
+<details> 
+<summary>접기/펼치기 버튼</summary>
+  
+``` python
+
+def solve(N, M, i, j):
+    mask = ((2 ** j) - 1) - ((2 ** i) - 1)
+    return (N & ~mask) | (M << i)
+
+def toBinary(N):
+    if N == 0: return ""
+    else: return printBinary(N//2) + str(N % 2)
+    
+```
+
+
+```python
+toBinary(solve(1024, 19, 2, 6))
+```
+
+    '10001001100'
+
+  
+</details>
