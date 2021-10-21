@@ -16,7 +16,7 @@
 구현
 ------
 - 언어: Modern C++ (C++11 이상)
-- https://ideone.com/Vc8CYZ
+- https://ideone.com/iwtBSO
 
 ``` C++
 #include <cstdio>
@@ -33,8 +33,8 @@ int main(void)
     printf("\n");
     
     printf("%" PRIu64 "\n", 
-        ( num & 0xAAAAAAAAAAAAAAAALL ) >> 1 | 
-        ( num & 0x5555555555555555LL ) << 1 );
+        ( num & 0xAAAAAAAAAAAAAAAAULL ) >> 1 | 
+        ( num & 0x5555555555555555ULL ) << 1 );
     return 0;
 }
 ```
