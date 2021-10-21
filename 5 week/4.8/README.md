@@ -83,3 +83,62 @@ console.log(isSubTree(T2, T1));
 
 
 </details>
+ 
+ 
+김경찬2
+<details>
+<summary>접기/펼치기 버튼</summary>
+ 
+### 개념  
+  
+> Null인 노드도 포함시킨다. 자세한 설명은 본 디렉토리 PPT자료 참고
+ 
+ ---
+ 
+#### 문제풀이
+<img width="800" src="https://user-images.githubusercontent.com/8155815/137364708-5ac882c1-c7fa-4ea7-bd40-e0826ca2c88a.png">
+
+``` javascript
+const isSub = (T1, T2) => {
+  return goTraverse(1, T1).indexOf(goTraverse(1, T2)) >= 0;
+};
+const goTraverse = (root, tree) => {
+  if (!tree[root]) return "n";
+  return (
+    tree[root] + goTraverse(root * 2, tree) + goTraverse(root * 2 + 1, tree)
+  );
+};
+
+const T1 = [
+  null,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+];
+const T2 = [null, 3, 6, 7, 12, 13, 14, 15];
+console.log(goTraverse(1, T1)); // 124816nn17nn918nnn510nn11nn3612nn13nn714nn15nn
+console.log(goTraverse(1, T2)); //3612nn13nn714nn15nn
+console.log(isSub(T1, T2)); // true
+
+*/
+
+```
+
+
+</details>
+
