@@ -110,7 +110,7 @@ void print_binary(double x)
         // print a dot character
         putchar('.');
         
-        // print zero digits while the exponent is more than zero
+        // print zero digits while the exponent is less than zero
         while ( exponent_abs-- )
         {
             putchar('0');
