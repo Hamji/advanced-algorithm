@@ -143,4 +143,9 @@ int main(void)
     return 0;
 }
 ```
+
+성능 평가
+------
+- https://ideone.com/nVkDV3
+- 입력 실수 0.625를 기준으로 Naïve한 구현은 2612클럭, 본 구현은 599클럭 정도 소요. 약 4배 정도로 성능이 향상됨.
 </details>
