@@ -60,6 +60,7 @@ print(result)
 
 using namespace std;
 
+// expects 0 ≤ x < 2
 void print_binary(double x)
 {
     // zero check
@@ -69,16 +70,18 @@ void print_binary(double x)
         return;
     }
 
-    int         exponent_abs    = -( ( (int16_t *)&x )[3] >> 4 ) + 1023;
-    uint64_t    mantissa        = 0x8000000000000000ULL | *(uint64_t *)&x << 11; // mantissa with implicit bit
-
+    // we assumed the processor uses little endian as the byte order
+    // for a portable code, we can use uint64_t instead
+    int             exponent_abs    = -( ( (int16_t *)&x )[3] >> 4 ) + 1023;
+    
     // check the exponent field
     if ( exponent_abs > 30 )
     {
         fprintf(stderr, "ERROR\n");
         return;
     }
-
+    
+    uint64_t        mantissa        = 0x8000000000000000ULL | *(uint64_t *)&x << 11; // mantissa with implicit bit
     const int       possible_digits = 31 - exponent_abs;
     const uint64_t  error_checker   = ~uint64_t(0) >> possible_digits;
     
@@ -106,14 +109,22 @@ void print_binary(double x)
     {
         // print a dot character
         putchar('.');
+        
+        // print zero digits while the exponent is more than zero
         while ( exponent_abs-- )
         {
             putchar('0');
         }
-        do
+        
+        // print the mantissa digits
+        putchar(int64_t(mantissa) < 0 | '0');
+        // we don't use do-while loop but do unroll it, here are the reasons:
+        // 1) Intel's shift instruction sets the Zero Flag (ZF) and the Sign Flag (SF)
+        // 2) We believe some smart compilers can exploit these points to optimize the code
+        while ( mantissa <<= 1 )
         {
-            putchar(( int64_t(mantissa) < 0 ) | '0');
-        } while ( mantissa <<= 1 );
+            putchar(int64_t(mantissa) < 0 | '0');
+        }
     }
 
     // print a newline character
