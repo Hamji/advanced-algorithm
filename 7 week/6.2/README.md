@@ -10,6 +10,8 @@
 <summary>접기/펼치기 버튼</summary>
 
   <img src="chess.png"  width="400" height="400">
+  <img src="도미노.png"  width="50" height="100">
+  
   ```
   
   답은 불가능 하다 일단 위의 체스판을 봐보자,
