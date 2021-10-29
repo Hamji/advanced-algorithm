@@ -12,6 +12,7 @@
   <img src="chess.png"  width="400" height="400">
   <img src="도미노.png"  width="50" height="100">
   <img src="도미노.png"  width="100" height="50">
+  
   ```
   
   답은 불가능 하다 일단 위의 체스판을 봐보자,
