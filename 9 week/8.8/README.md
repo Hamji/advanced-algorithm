@@ -65,7 +65,7 @@ public class Game{
     }
     public void changeScore(Player player, int value){
         /* value만큼의 점수를 player에 더해준다 */
-        player.setScore(player.getColor() + value);
+        player.setScore(player.getScore() + value);
     }
 }
 // 유저
