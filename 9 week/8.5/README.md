@@ -359,7 +359,7 @@ public class AppTest {
 		onlineReaderSystem.getUserManager().addUser(user1);
 		onlineReaderSystem.getUserManager().addUser(user2);
 
-		onlineReaderSystem.setActiveBook(algoBook);
+		onlineReaderSystem.setActiveBook(book1);
 		onlineReaderSystem.setActiveUser(user1);
 
 		onlineReaderSystem.getDisplay().turnPageForward();
